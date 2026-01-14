@@ -1,0 +1,85 @@
+[
+  {
+    "title": "Mono",
+    "description": "Moño bordado a mano con flores lila. Tela de fibra y lino. Hilo de poliéster.",
+    "code": "MONO-001",
+    "price": 2500,
+    "status": true,
+    "stock": 10,
+    "category": "accesorios",
+    "thumbnails": [
+      "https://raw.githubusercontent.com/LunaBujalesky/WintekaShowroom/main/src/assets/MonoVerde.jpg",
+      "https://raw.githubusercontent.com/LunaBujalesky/WintekaShowroom/main/src/assets/MonoBeige.jpg",
+      "https://raw.githubusercontent.com/LunaBujalesky/WintekaShowroom/main/src/assets/MonoNegro.jpg",
+      "https://raw.githubusercontent.com/LunaBujalesky/WintekaShowroom/main/src/assets/MonoRojo.jpg"
+    ]
+  },
+  {
+    "title": "Enterito",
+    "description": "Tela de corderoy finita, transpirable y muy suave.",
+    "code": "ENT-001",
+    "price": 32000,
+    "status": true,
+    "stock": 5,
+    "category": "ropa",
+    "thumbnails": [
+      "https://raw.githubusercontent.com/LunaBujalesky/WintekaShowroom/main/src/assets/EnteritoVerde.jpg",
+      "https://raw.githubusercontent.com/LunaBujalesky/WintekaShowroom/main/src/assets/EnteritoVioleta.jpg"
+    ]
+  },
+  {
+    "title": "Sweatter Coffe",
+    "description": "Sweatter hilo de algodon bordado. Color unico.",
+    "code": "SWE-001",
+    "price": 21000,
+    "status": true,
+    "stock": 8,
+    "category": "ropa",
+    "thumbnails": [
+      "https://raw.githubusercontent.com/LunaBujalesky/WintekaShowroom/main/src/assets/Sweatter1.jpg",
+      "https://raw.githubusercontent.com/LunaBujalesky/WintekaShowroom/main/src/assets/sweater3.jpg",
+      "https://raw.githubusercontent.com/LunaBujalesky/WintekaShowroom/main/src/assets/sweater2.jpg"
+    ]
+  },
+  {
+    "title": "PoliPin",
+    "description": "Dijes de polillas que tambien pueden ser usados de pin. Ceramica, acero y piedra.",
+    "code": "PIN-001",
+    "price": 10000,
+    "status": true,
+    "stock": 20,
+    "category": "accesorios",
+    "thumbnails": [
+      "https://raw.githubusercontent.com/LunaBujalesky/WintekaShowroom/main/src/assets/polillawhite.jpg",
+      "https://raw.githubusercontent.com/LunaBujalesky/WintekaShowroom/main/src/assets/polillabeige.jpg",
+      "https://raw.githubusercontent.com/LunaBujalesky/WintekaShowroom/main/src/assets/polillaverde.jpg"
+    ]
+  },
+  {
+    "title": "Acolchado MOSS",
+    "description": "Acolchado poliester peluche color verde musgo. Muy abrigado y cozy. Viene en 1/2 plaza y dos plazas.",
+    "code": "ACO-001",
+    "price": 100000,
+    "status": true,
+    "stock": 3,
+    "category": "hogar",
+    "thumbnails": [
+      "https://raw.githubusercontent.com/LunaBujalesky/WintekaShowroom/main/src/assets/kingsize.jpg",
+      "https://raw.githubusercontent.com/LunaBujalesky/WintekaShowroom/main/src/assets/queensize.jpg"
+    ]
+  },
+  {
+    "title": "Lampara Lily",
+    "description": "Lampara con forma de campanita, viene en 3 variantes segun el tipo de iluminacion. En vidrio y ceramica.",
+    "code": "LAMP-001",
+    "price": 80000,
+    "status": true,
+    "stock": 6,
+    "category": "hogar",
+    "thumbnails": [
+      "https://raw.githubusercontent.com/LunaBujalesky/WintekaShowroom/main/src/assets/Lampara.jpg",
+      "https://raw.githubusercontent.com/LunaBujalesky/WintekaShowroom/main/src/assets/candelabroLily.jpg",
+      "https://raw.githubusercontent.com/LunaBujalesky/WintekaShowroom/main/src/assets/DepieLily.jpg"
+    ]
+  }
+]
