@@ -59,18 +59,10 @@ router.get("/", async (req, res) => {
 /* POST /api/products para que tome un array con varios productos y no uno solo*/
 router.post("/", async (req, res) => {
   try {
-    if (!Array.isArray(req.body)) {
-      return res.status(400).json({
-        status: "error",
-        error: "Se espera un array de productos"
-      });
-    }
-
-    const products = await ProductModel.insertMany(req.body);
-
+    const product = await ProductModel.create(req.body);
     res.status(201).json({
       status: "success",
-      payload: products
+      payload: product
     });
   } catch (error) {
     res.status(400).json({
