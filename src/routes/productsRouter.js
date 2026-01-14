@@ -56,7 +56,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-/* POST /api/products */
+/* POST /api/products para que tome un array con varios productos y no uno solo*/
 router.post("/", async (req, res) => {
   try {
     if (!Array.isArray(req.body)) {

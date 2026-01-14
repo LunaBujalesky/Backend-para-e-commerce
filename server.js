@@ -4,15 +4,14 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { Server } from "socket.io";
 import { engine } from "express-handlebars";
-
+import { ProductModel } from "./src/models/Product.model.js";
 
 // Routers
 import productsRouter from "./src/routes/productsRouter.js";
 import cartsRouter from "./src/routes/cartsRouter.js";
 import viewsRouter from "./src/routes/viewsRouter.js";
 
-// Managers
-import ProductManager from "./src/managers/ProductManager.js";
+
 // mongodb 
 
 import dotenv from "dotenv";
@@ -61,48 +60,31 @@ app.use("/api/carts", cartsRouter);
 // Socket.IO
 // --------------------------------------------------
 
-const productManager = new ProductManager(
-  path.join(__dirname, "src", "data", "products.json")
-);
-
 io.on("connection", async (socket) => {
   console.log(" Cliente conectado");
 
-  // Enviar productos actuales
-  const products = await productManager.getProducts();
+  const products = await ProductModel.find().lean();
   socket.emit("products", products);
 
-  // Crear producto desde websocket
   socket.on("new-product", async (data) => {
-    await productManager.addProduct({
-      title: data.title,
-      description: data.description || "Sin descripción",
-      code: Date.now().toString(),
-      price: Number(data.price),
-      status: true,
-      stock: 1,
-      category: "general",
-      thumbnails: []
-    });
+    await ProductModel.create(data);
 
-    const updatedProducts = await productManager.getProducts();
+    const updatedProducts = await ProductModel.find().lean();
     io.emit("products", updatedProducts);
   });
 
-  // Eliminar producto desde websocket
   socket.on("delete-product", async (pid) => {
-    await productManager.deleteProduct(pid);
+    await ProductModel.findByIdAndDelete(pid);
 
-    const updatedProducts = await productManager.getProducts();
+    const updatedProducts = await ProductModel.find().lean();
     io.emit("products", updatedProducts);
   });
 });
-
 // --------------------------------------------------
 // Servidor
 // --------------------------------------------------
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8082;
 server.listen(PORT, () => {
   console.log(`Servidor corriendo en puerto ${PORT}`);
 });
