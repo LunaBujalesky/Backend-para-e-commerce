@@ -2,14 +2,15 @@
 
 <ul>
   {{#each products}}
-    <li>
-      <strong>{{this.title}}</strong> - ${{this.price}}
-      <br>
-      <a href="/products/{{this._id}}">Ver detalle</a>
-      <button onclick="addToCart('{{this._id}}')">
-        Agregar al carrito
-      </button>
-    </li>
+  <li>
+<strong>{{this.title}}</strong> ({{this.code}}) - ${{this.price}} <br>
+  <small>{{this.description}}</small>
+  <br>
+  <a href="/products/{{this._id}}">Ver detalle</a>
+  <button onclick="addToCart('{{this._id}}')">
+    Agregar al carrito
+  </button>
+</li>
   {{/each}}
 </ul>
 

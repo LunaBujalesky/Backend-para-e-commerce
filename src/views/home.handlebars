@@ -3,7 +3,9 @@
 <ul>
   {{#each products}}
     <li>
-      <strong>{{this.title}}</strong> - ${{this.price}}
+      <strong>{{this.title}}</strong> ({{this.code}}) - ${{this.price}} <br>
+      
     </li>
+      <small>{{this.description}}</small>
   {{/each}}
 </ul>
