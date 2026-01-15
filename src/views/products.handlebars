@@ -1,0 +1,40 @@
+<h1>Productos</h1>
+
+<ul>
+  {{#each products}}
+    <li>
+      <strong>{{this.title}}</strong> - ${{this.price}}
+      <br>
+      <a href="/products/{{this._id}}">Ver detalle</a>
+      <button onclick="addToCart('{{this._id}}')">
+        Agregar al carrito
+      </button>
+    </li>
+  {{/each}}
+</ul>
+
+<hr>
+
+<div>
+  {{#if hasPrevPage}}
+    <a href="{{prevLink}}">⬅ Página anterior</a>
+  {{/if}}
+
+  <span>Página {{page}} de {{totalPages}}</span>
+
+  {{#if hasNextPage}}
+    <a href="{{nextLink}}">Página siguiente ➡</a>
+  {{/if}}
+</div>
+
+<script>
+  async function addToCart(pid) {
+    const cartId = "{{cartId}}";
+
+    await fetch(`/api/carts/${cartId}/product/${pid}`, {
+      method: "POST"
+    });
+
+    alert("Producto agregado al carrito");
+  }
+</script>
