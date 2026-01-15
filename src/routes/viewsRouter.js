@@ -10,17 +10,11 @@ router.get("/", async (req, res) => {
   res.render("home", { products });
 });
 
-// PRODUCTS con paginación 
+// PRODUCTS con paginación
 router.get("/products", async (req, res) => {
-  const {
-    limit = 10,
-    page = 1,
-    sort,
-    query
-  } = req.query;
+  const { limit = 10, page = 1, sort, query } = req.query;
 
   let filter = {};
-
   if (query) {
     if (query === "true" || query === "false") {
       filter.status = query === "true";
@@ -59,11 +53,12 @@ router.get("/products", async (req, res) => {
 
 // PRODUCTO INDIVIDUAL
 router.get("/products/:pid", async (req, res) => {
-  const product = await ProductModel
-    .findById(req.params.pid)
-    .lean();
+  const product = await ProductModel.findById(req.params.pid).lean();
 
-  res.render("productDetail", { product });
+  res.render("productDetail", {
+    product,
+    cartId: "6968300f6a748c82abe42066"
+  });
 });
 
 // VISTA DE CARRITO
@@ -76,15 +71,4 @@ router.get("/carts/:cid", async (req, res) => {
   res.render("cart", cart);
 });
 
-
-router.get("/products/:pid", async (req, res) => {
-  const product = await ProductModel
-    .findById(req.params.pid)
-    .lean();
-
-  res.render("productDetail", {
-    product,
-    cartId: "6968300f6a748c82abe42066"
-  });
-});
 export default router;
