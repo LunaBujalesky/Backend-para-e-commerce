@@ -63,5 +63,80 @@ router.post("/:cid/product/:pid", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+// DELETE /api/carts/:cid/products/:pid
+router.delete("/:cid/products/:pid", async (req, res) => {
+    const { cid, pid } = req.params;
+  
+    const cart = await CartModel.findById(cid);
+    if (!cart) return res.status(404).json({ error: "Carrito no encontrado" });
+  
+    cart.products = cart.products.filter(
+      p => p.product.toString() !== pid
+    );
+  
+    await cart.save();
+    res.json(cart);
+  });
 
+  // DELETE /api/carts/:cid
+router.delete("/:cid", async (req, res) => {
+    try {
+      const cart = await CartModel.findByIdAndUpdate(
+        req.params.cid,
+        { products: [] },
+        { new: true }
+      );
+  
+      if (!cart) {
+        return res.status(404).json({ error: "Carrito no encontrado" });
+      }
+  
+      res.json(cart);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+// PUT /api/carts/:cid
+  router.put("/:cid", async (req, res) => {
+    const { products } = req.body;
+  
+    const cart = await CartModel.findByIdAndUpdate(
+      req.params.cid,
+      { products },
+      { new: true }
+    );
+  
+    if (!cart) return res.status(404).json({ error: "Carrito no encontrado" });
+    res.json(cart);
+  });
+
+// PUT /api/carts/:cid/products/:pid
+router.put("/:cid/products/:pid", async (req, res) => {
+    try {
+      const { cid, pid } = req.params;
+      const { quantity } = req.body;
+  
+      const cart = await CartModel.findById(cid);
+      if (!cart) {
+        return res.status(404).json({ error: "Carrito no encontrado" });
+      }
+  
+      const product = cart.products.find(
+        p => p.product.toString() === pid
+      );
+  
+      if (!product) {
+        return res.status(404).json({ error: "Producto no está en el carrito" });
+      }
+  
+      product.quantity = quantity;
+      await cart.save();
+  
+      res.json(cart);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+  
 export default router;

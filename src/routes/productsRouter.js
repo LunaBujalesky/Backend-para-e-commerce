@@ -13,10 +13,15 @@ router.get("/", async (req, res) => {
       query
     } = req.query;
 
-    const filter = query
-      ? { category: query }
-      : {};
+    let filter = {};
 
+    if (query) {
+      if (query === "true" || query === "false") {
+        filter.status = query === "true";
+      } else {
+        filter.category = query;
+      }
+    }
     const sortOption =
       sort === "asc" ? { price: 1 } :
       sort === "desc" ? { price: -1 } :
