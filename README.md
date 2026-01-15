@@ -88,11 +88,6 @@ npm install
 npm run dev
 
 
-Crear un archivo .env con las siguientes variables:
-
-PORT=8082
-MONGO_URL=your_mongo_connection_string
-
 📝 Notas
 
 MongoDB es utilizado como sistema de persistencia principal.
